@@ -1,0 +1,33 @@
+
+    .foto-perfil {
+      height: 50%;
+      width: auto;
+      max-width: 100%;
+      border-radius: 50%;
+    }
+    .corPrimaria {
+      background-color:black;
+    }
+    .titulos {
+      text-decoration: underline;
+      text-underline-position: below;
+      padding-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    p {
+      font-family:Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color:black !important;
+    }
+    .icones {
+      padding-left:15px;
+    }
+    .textoBranco {
+      color: white !important;
+    }
+    .jumbotron {
+      margin-bottom: 0px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }

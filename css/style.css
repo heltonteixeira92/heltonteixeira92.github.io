@@ -31,3 +31,29 @@
     html {
       scroll-behavior: smooth;
     }
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+#text{
+font-size: 40px;
+}
+
+.bar{
+    animation: animate 0.5s infinite linear;
+}
+
+@keyframes animate{
+    0%, 100%{
+    opacity: 1;
+    }
+    50%{
+    opacity: 0;
+    }
+}

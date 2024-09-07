@@ -4,7 +4,10 @@
         "company": "G4F",
         "startDate": "Apr, 2023",
         "endDate": "Present",
-        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "experiences": [
+            "Cleaned up and improved the Django and DRF code, making it faster to work with and less likely to break in the future. Wrote tests to check the code works properly.", 
+            "Contributing to the front-end of our web application using JavaScript and React. Provided ongoing support for the web application that is expected to reach 100 thousand users, making sure it worked smoothly for everyone."
+        ],
         "imageSrc": "history/g4fbr_logo.png"
     },
     {
@@ -12,7 +15,7 @@
         "company": "Ongame Entretenimento",
         "startDate": "Oct, 2021",
         "endDate": "Apr, 2023",
-        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "experiences": ["Developed and maintained projects that included a payment system, newsletters, user management and character statistics in the games Point blank, Aika Online and Metin 2, loading and processing database data."],
         "imageSrc": "history/ongame_logo.jpeg"
     },
     {
@@ -20,7 +23,10 @@
         "company": "OngaAuto Moto Escola Malvesme",
         "startDate": "Mar, 2021",
         "endDate": "Oct, 2021",
-        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "experiences": [
+            "Managed and grew social media presence through strategic content creation and automation tools.", 
+            "Developed and maintained a dynamic Django website to enhance user experience and meet business objectives."
+        ],
         "imageSrc": "history/auto_escola.jpeg"
     }
 ]

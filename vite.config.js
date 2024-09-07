@@ -7,5 +7,5 @@ export default defineConfig({
   css: {
     localsConvention: "camelCase",
   },
-  base: "/heltonteixeira92.github.io"
+
 })

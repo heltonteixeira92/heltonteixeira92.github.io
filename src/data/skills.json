@@ -18,5 +18,25 @@
     {
         "title": "React",
         "imageSrc": "skills/react.png"
+    },
+    {
+        "title": "Linux",
+        "imageSrc": "skills/linux.png"
+    },
+    {
+        "title": "Docker",
+        "imageSrc": "skills/docker.png"
+    },
+    {
+        "title": "CI CD",
+        "imageSrc": "skills/ci-cd.png"
+    },
+    {
+        "title": "Mysql",
+        "imageSrc": "skills/mysql.png"
+    },
+    {
+        "title": "Redis cache/queue",
+        "imageSrc": "skills/redis.png"
     }
 ]

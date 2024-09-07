@@ -1,0 +1,26 @@
+[
+    {
+        "role": "Python Developer Analyst",
+        "company": "G4F",
+        "startDate": "Apr, 2023",
+        "endDate": "Present",
+        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "imageSrc": "history/g4fbr_logo.png"
+    },
+    {
+        "role": "Python Developer",
+        "company": "Ongame Entretenimento",
+        "startDate": "Oct, 2021",
+        "endDate": "Apr, 2023",
+        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "imageSrc": "history/ongame_logo.jpeg"
+    },
+    {
+        "role": "Python Developer",
+        "company": "OngaAuto Moto Escola Malvesme",
+        "startDate": "Mar, 2021",
+        "endDate": "Oct, 2021",
+        "experiences": ["Worked on a project to attend 100k people", "Reduced load time"],
+        "imageSrc": "history/auto_escola.jpeg"
+    }
+]

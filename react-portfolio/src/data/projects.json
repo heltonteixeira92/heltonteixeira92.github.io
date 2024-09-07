@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Project A",
+        "imageSrc": "projects/project.png",
+        "description": "This is a project made to learn the latest",
+        "skills": ["React", "Express", "Node"],
+        "demo": "https://example.com",
+        "source": "https://www.github.com"
+    
+    },
+    {
+        "title": "Project B",
+        "imageSrc": "projects/project.png",
+        "description": "This is a project made to learn the latest",
+        "skills": ["React", "Express", "Node"],
+        "demo": "https://example.com",
+        "source": "https://www.github.com"
+    
+    }
+]

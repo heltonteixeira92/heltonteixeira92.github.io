@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import Sidebar from '../Sidebar/Sidebar';
 import styles from "./Navbar.module.css";
 import { getImageUrl } from "../../utils"
 
@@ -8,8 +8,8 @@ const Navbar = () => {
 
 
   return (
-    <nav className={styles.navbar}>
-        <a className={styles.title} href="/">
+    <nav className={styles.navbar} id="home">
+        <a className={styles.title}>
             Portfolio
         </a>
         <div className={styles.menu}>
@@ -20,21 +20,7 @@ const Navbar = () => {
             alt="menu-button"
             onClick={() => setMenuOpen(!menuOpen)}
             />
-            <ul className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
-            onClick={() => setMenuOpen(false)}>
-                <li>
-                    <a href='#about'>About</a>
-                </li>
-                <li>
-                    <a href="#experience">Experience</a>
-                </li>
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-                <li>
-                    <a href="#contacts">Contacts</a>
-                </li>
-            </ul>
+            <Sidebar menuOpen={menuOpen}/>
         </div>
     </nav>
   )

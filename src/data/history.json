@@ -1,9 +1,18 @@
 [
     {
+        "role": "Software Developer",
+        "company": "Magalu Cloud",
+        "startDate": "Jan, 2025",
+        "endDate": "Present",
+        "experiences": [
+        ],
+        "imageSrc": "history/magalucloud_logo.jpeg"
+    },
+    {
         "role": "Python Developer Analyst",
         "company": "G4F",
         "startDate": "Apr, 2023",
-        "endDate": "Present",
+        "endDate": "Jan, 2025",
         "experiences": [
             "Cleaned up and improved the Django and DRF code, making it faster to work with and less likely to break in the future. Wrote tests to check the code works properly.", 
             "Contributing to the front-end of our web application using JavaScript and React. Provided ongoing support for the web application that is expected to reach 100 thousand users, making sure it worked smoothly for everyone."
@@ -20,7 +29,7 @@
     },
     {
         "role": "Python Developer",
-        "company": "OngaAuto Moto Escola Malvesme",
+        "company": "Auto Moto Escola Malves",
         "startDate": "Mar, 2021",
         "endDate": "Oct, 2021",
         "experiences": [

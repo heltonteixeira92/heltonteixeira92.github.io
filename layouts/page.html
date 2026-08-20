@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="post">
+  <div class="meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    {{ range .Params.categorias }}
+      <a class="categoria" href="{{ (printf "/categorias/%s/" .) | relURL }}">~/{{ . }}</a>
+    {{ end }}
+  </div>
+
+  <h1 class="titulo">{{ .Title }}</h1>
+
+  <div class="prosa">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+    <footer class="tags">
+      {{ range . }}
+        <a href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a>
+      {{ end }}
+    </footer>
+  {{ end }}
+</article>
+{{ end }}

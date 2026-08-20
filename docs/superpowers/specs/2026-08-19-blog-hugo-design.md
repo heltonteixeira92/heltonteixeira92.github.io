@@ -32,7 +32,7 @@ resto do design: sem analytics, sem newsletter, sem SEO agressivo, sem "Hire me"
 
 | Decisão | Escolha | Motivo |
 |---|---|---|
-| Gerador | Hugo | Zero dependências, binário único, longevidade. Templating próximo do Django, que o autor já conhece. |
+| Gerador | Hugo extended, fixado em v0.165.0 | Zero dependências, binário único, longevidade. Templating próximo do Django, que o autor já conhece. |
 | Idioma | Português (pt-BR) | O autor escreve na língua em que pensa. |
 | Organização | Feed único cronológico com filtro | A mistura de assuntos é a identidade do site, não um problema a resolver. |
 | Escrita | Markdown no repo + git push | Sem CMS, sem serviço externo. Permite postar do celular via github.com. |
@@ -78,7 +78,7 @@ apaga as fotos junto.
 ---
 title: "Serra do Rio do Rastro em dois dias"
 date: 2026-08-19
-categoria: estrada          # obrigatório: 'codigo' ou 'estrada'
+categorias: ["estrada"]     # obrigatório, exatamente um: 'codigo' ou 'estrada'
 tags: ["santa-catarina", "solo"]
 resumo: "Saí de Sampa achando que o frio era o problema."
 draft: true
@@ -87,8 +87,10 @@ draft: true
 
 Dois eixos de classificação, com papéis distintos:
 
-- **`categoria`** — fechada em dois valores. Alimenta o filtro da home. Sendo
-  fechada, o filtro nunca cresce nem desarruma.
+- **`categorias`** — fechada em dois valores, com exatamente um por post.
+  Alimenta o filtro da home. Sendo fechada, o filtro nunca cresce nem desarruma.
+  A chave vai no plural e em lista porque é assim que o Hugo declara taxonomias;
+  a convenção de "exatamente um valor" é do autor, garantida pelo archetype.
 - **`tags`** — livre e opcional. Aparecem no rodapé do post; o Hugo gera
   `/tags/<tag>/` automaticamente.
 
@@ -178,25 +180,37 @@ feed misturado sem transformar o site num terminal.
 ### Estrutura do tema
 
 Tema próprio, CSS puro com custom properties. Sem Tailwind, sem Sass, sem etapa
-de build de CSS — o que dispensa a versão *extended* do Hugo.
+de build de CSS.
+
+**Hugo extended é obrigatório.** A intenção inicial era usar a edição padrão,
+já que sem Sass ela bastaria — mas a codificação para **WebP exige a edição
+extended** (suporte adicionado no Hugo 0.83, e apenas no extended). Como as fotos
+de viagem dependem de WebP, a edição extended entra como requisito. Isso não
+altera a promessa de dependência zero: continua sendo um binário único.
+
+Estrutura conforme o **novo sistema de templates** do Hugo (v0.146+), que
+removeu `layouts/_default/` e renomeou `partials/` e `shortcodes/` com
+underscore:
 
 ```
 layouts/
-├── index.html            # home: feed com filtro
-├── _default/
-│   ├── baseof.html
-│   ├── single.html       # post
-│   ├── list.html         # índice de uma taxonomia (ex: /tags/)
-│   └── term.html         # posts de um termo (ex: /categorias/estrada/)
-├── partials/
+├── baseof.html
+├── home.html             # feed com filtro
+├── page.html             # post
+├── taxonomy.html         # índice de uma taxonomia (ex: /tags/)
+├── term.html             # posts de um termo (ex: /categorias/estrada/)
+├── sobre.html            # layout da página /sobre
+├── _partials/
 │   ├── head.html
 │   ├── header.html
 │   ├── footer.html
+│   ├── filtro.html
 │   └── post-item.html
-└── shortcodes/
+└── _shortcodes/
     └── foto.html         # imagem otimizada com legenda
 assets/css/main.css
 static/CNAME
+static/fonts/*.woff2
 ```
 
 ## Deploy
@@ -233,8 +247,12 @@ O Hugo processa fotos durante o build. Sem cache, reprocessa todas as imagens a
 cada push, inclusive em correções de texto.
 
 A documentação do Hugo sugere commitar `resources/`. **Rejeitado:** dobraria o
-peso das imagens no repositório. Usa-se `actions/cache` sobre `resources/_gen`,
-que dá o mesmo ganho sem sujar o repo.
+peso das imagens no repositório.
+
+Em vez disso, segue-se o workflow oficial do Hugo para GitHub Pages: o build usa
+`--cacheDir "${{ runner.temp }}/.cache/hugo"` combinado com
+`actions/cache/restore` e `actions/cache/save`. Mesmo ganho, sem sujar o repo, e
+sem inventar configuração própria.
 
 ### Configuração
 

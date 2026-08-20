@@ -1,3 +1,6 @@
+# Worktrees
+.worktrees/
+
 # Saída de build do Hugo
 /public/
 /resources/

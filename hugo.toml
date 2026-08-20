@@ -1,6 +1,6 @@
 baseURL = "https://www.heltonteixeira.dev/"
 title = "Helton Teixeira"
-languageCode = "pt-br"
+locale = "pt-br"
 defaultContentLanguage = "pt-br"
 enableRobotsTXT = true
 

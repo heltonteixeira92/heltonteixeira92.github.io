@@ -26,7 +26,7 @@ resto do design: sem analytics, sem newsletter, sem SEO agressivo, sem "Hire me"
 1. Publicar um post custa: escrever markdown, `git push`. Nada mais.
 2. O site não parece um template.
 3. Daqui a três anos o projeto ainda builda sem arqueologia de dependências.
-4. Posts de código e de estrada convivem sem que o site pareça dividido.
+4. Posts técnicos e pessoais convivem sem que o site pareça dividido.
 
 ## Decisões
 
@@ -78,7 +78,7 @@ apaga as fotos junto.
 ---
 title: "Serra do Rio do Rastro em dois dias"
 date: 2026-08-19
-categorias: ["estrada"]     # obrigatório, exatamente um: 'codigo' ou 'estrada'
+categorias: ["fora"]        # obrigatório: "codigo", "fora", ou os dois
 tags: ["santa-catarina", "solo"]
 resumo: "Saí de Sampa achando que o frio era o problema."
 draft: true
@@ -87,21 +87,31 @@ draft: true
 
 Dois eixos de classificação, com papéis distintos:
 
-- **`categorias`** — fechada em dois valores, com exatamente um por post.
-  Alimenta o filtro da home. Sendo fechada, o filtro nunca cresce nem desarruma.
-  A chave vai no plural e em lista porque é assim que o Hugo declara taxonomias;
-  a convenção de "exatamente um valor" é do autor, garantida pelo archetype.
+- **`categorias`** — fechada em dois valores: `codigo` e `fora`. Alimenta o
+  filtro da home. Sendo fechada, o filtro nunca cresce nem desarruma.
+
+  Normalmente um post tem uma categoria, mas **pode ter as duas** quando é
+  genuinamente os dois assuntos — uma viagem de moto até um evento de tecnologia,
+  por exemplo. Nesse caso ele aparece nas duas visões filtradas, o que é o
+  comportamento correto, e uma vez só na home, porque o feed é único.
+
+  `fora` significa "longe do computador" e cobre moto, camping, avião, carro e o
+  que vier depois. A alternativa `estrada` foi descartada por mentir sobre o
+  conteúdo: viagem de avião não é estrada, e renomear categoria depois de
+  publicada quebra URLs que já circularam.
+
+  A chave vai no plural e em lista porque é assim que o Hugo declara taxonomias.
 - **`tags`** — livre e opcional. Aparecem no rodapé do post; o Hugo gera
   `/tags/<tag>/` automaticamente.
 
 ### Filtro sem JavaScript
 
-O filtro `tudo · ~/codigo · ~/estrada` são três links para páginas que o Hugo já
+O filtro `tudo · ~/codigo · ~/fora` são três links para páginas que o Hugo já
 gera, não filtragem client-side:
 
 - `/` — todos os posts
 - `/categorias/codigo/`
-- `/categorias/estrada/`
+- `/categorias/fora/`
 
 Ganhos: funciona sem JS, cada filtro tem URL compartilhável, o botão voltar
 funciona, e cada visão é indexável. Custo: um recarregamento de página, que num
@@ -136,7 +146,7 @@ do terminal-em-tudo, que cansa em leitura longa.
 
 ### Marcador de categoria
 
-Categorias são marcadas por um path em monoespaçada — `~/codigo` e `~/estrada` —
+Categorias são marcadas por um path em monoespaçada — `~/codigo` e `~/fora` —
 em vez de cores de card ou ícones. Discreto, inequívoco, e resolve visualmente o
 feed misturado sem transformar o site num terminal.
 
@@ -162,9 +172,9 @@ feed misturado sem transformar o site num terminal.
 │  vejo quando desligo o computador e ando     │
 │  de moto.                                    │
 │  ────────────────────────────────────────    │
-│  tudo · ~/codigo · ~/estrada                 │  mono, links
+│  tudo · ~/codigo · ~/fora                    │  mono, links
 │  ────────────────────────────────────────    │
-│  2026-08-19            ~/estrada             │  mono
+│  2026-08-19            ~/fora                │  mono
 │  Serra do Rio do Rastro em dois dias         │  serif, grande
 │  Saí de Sampa achando que o frio era o       │
 │  problema.                                   │
@@ -198,7 +208,7 @@ layouts/
 ├── home.html             # feed com filtro
 ├── page.html             # post
 ├── taxonomy.html         # índice de uma taxonomia (ex: /tags/)
-├── term.html             # posts de um termo (ex: /categorias/estrada/)
+├── term.html             # posts de um termo (ex: /categorias/fora/)
 ├── sobre.html            # layout da página /sobre
 ├── _partials/
 │   ├── head.html

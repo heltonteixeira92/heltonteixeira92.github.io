@@ -1,1 +1,8 @@
-<!-- placeholder: preenchido pela Task 5 com o filtro de tres links -->
+<nav class="filtro" aria-label="Filtrar por categoria">
+  <a href="{{ "/" | relURL }}"
+     {{ if eq .atual "tudo" }}aria-current="page"{{ end }}>tudo</a>
+  <a href="{{ "/categorias/codigo/" | relURL }}"
+     {{ if eq .atual "codigo" }}aria-current="page"{{ end }}>~/codigo</a>
+  <a href="{{ "/categorias/fora/" | relURL }}"
+     {{ if eq .atual "fora" }}aria-current="page"{{ end }}>~/fora</a>
+</nav>

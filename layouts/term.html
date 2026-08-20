@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ if eq .Data.Plural "categorias" }}
+    {{ partial "filtro.html" (dict "atual" .Data.Term) }}
+  {{ else }}
+    <h1 class="titulo">#{{ .Data.Term }}</h1>
+  {{ end }}
+
+  <ol class="lista">
+    {{ range .Pages }}
+      {{ partial "post-item.html" . }}
+    {{ end }}
+  </ol>
+{{ end }}

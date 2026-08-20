@@ -1,0 +1,28 @@
+baseURL = "https://www.heltonteixeira.dev/"
+title = "Helton Teixeira"
+languageCode = "pt-br"
+defaultContentLanguage = "pt-br"
+enableRobotsTXT = true
+
+# Link interno quebrado derruba o build em vez de publicar um 404.
+# Vale apenas para links escritos com os shortcodes ref/relref.
+refLinksErrorLevel = "ERROR"
+
+[taxonomies]
+  categoria = "categorias"
+  tag = "tags"
+
+[params]
+  descricao = "Blog pessoal sobre desenvolvimento backend e viagens de moto."
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false      # usa classes CSS, para o highlight seguir o modo claro/escuro
+    lineNos = false
+    tabWidth = 2
+
+[services]
+  [services.rss]
+    limit = 20

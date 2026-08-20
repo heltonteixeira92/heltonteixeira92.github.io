@@ -1,5 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head><meta charset="utf-8"><title>{{ .Site.Title }}</title></head>
-<body></body>
-</html>
+{{ define "main" }}
+  {{ with .Content }}
+    <div class="abertura">{{ . }}</div>
+  {{ end }}
+
+  {{ partial "filtro.html" (dict "atual" "tudo") }}
+
+  <ol class="lista">
+    {{ range where site.RegularPages "Section" "posts" }}
+      {{ partial "post-item.html" . }}
+    {{ end }}
+  </ol>
+{{ end }}

@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="post">
+  {{ with .Resources.GetMatch "perfil.*" }}
+    {{ with .Process "resize 320x webp q85" }}
+      <img class="perfil" src="{{ .RelPermalink }}"
+           width="{{ .Width }}" height="{{ .Height }}"
+           alt="Helton Teixeira">
+    {{ end }}
+  {{ end }}
+
+  <h1 class="titulo">{{ .Title }}</h1>
+
+  <div class="prosa">{{ .Content }}</div>
+
+  <h2 class="titulo-secao">Experiências</h2>
+
+  <ol class="experiencias">
+    {{ range hugo.Data.experiencias }}
+      <li>
+        <div class="periodo">{{ .inicio }} — {{ .fim }}</div>
+        <div class="empresa">
+          {{ with resources.Get (printf "experiencias/%s" .logo) }}
+            {{ with .Process "resize 64x webp q85" }}
+              <img class="logo" src="{{ .RelPermalink }}"
+                   width="{{ .Width }}" height="{{ .Height }}" alt="">
+            {{ end }}
+          {{ end }}
+          <h3>{{ .cargo }} · {{ .empresa }}</h3>
+        </div>
+        <ul>
+          {{ range .atividades }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ol>
+</article>
+{{ end }}

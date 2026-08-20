@@ -1,0 +1,39 @@
+# Histórico profissional, do mais recente para o mais antigo.
+# Os logos ficam em assets/experiencias/.
+
+- cargo: "Desenvolvedor de Software"
+  empresa: "Magalu Cloud"
+  inicio: "jan 2025"
+  fim: "atual"
+  logo: "magalucloud_logo.jpeg"
+  atividades:
+    # PENDENTE: emprego atual e o mais relevante do currículo, e a lista
+    # está vazia desde o portfólio antigo. Duas ou três linhas sobre o que
+    # você construiu aqui. Só você pode escrever isso.
+    - "Descrever as atividades na Magalu Cloud."
+
+- cargo: "Analista Desenvolvedor Python"
+  empresa: "G4F"
+  inicio: "abr 2023"
+  fim: "jan 2025"
+  logo: "g4fbr_logo.png"
+  atividades:
+    - "Reorganizei e melhorei o código Django e DRF, deixando-o mais rápido de trabalhar e menos propenso a quebrar. Escrevi testes para garantir que continuasse funcionando."
+    - "Contribuí no front-end da aplicação web com JavaScript e React, e dei suporte contínuo a um sistema com expectativa de chegar a 100 mil usuários."
+
+- cargo: "Desenvolvedor Python"
+  empresa: "Ongame Entretenimento"
+  inicio: "out 2021"
+  fim: "abr 2023"
+  logo: "ongame_logo.jpeg"
+  atividades:
+    - "Desenvolvi e mantive sistemas de pagamento, newsletters, gestão de usuários e estatísticas de personagens para os jogos Point Blank, Aika Online e Metin 2, carregando e processando dados de banco."
+
+- cargo: "Desenvolvedor Python"
+  empresa: "Auto Moto Escola Malves"
+  inicio: "mar 2021"
+  fim: "out 2021"
+  logo: "auto_escola.jpeg"
+  atividades:
+    - "Cuidei da presença nas redes sociais, com criação de conteúdo e ferramentas de automação."
+    - "Desenvolvi e mantive um site em Django para melhorar a experiência do usuário e atender aos objetivos do negócio."

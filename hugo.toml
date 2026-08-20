@@ -3,6 +3,7 @@ title = "Helton Teixeira"
 locale = "pt-br"
 defaultContentLanguage = "pt-br"
 enableRobotsTXT = true
+disableKinds = ["section"]
 
 # Link interno quebrado derruba o build em vez de publicar um 404.
 # Vale apenas para links escritos com os shortcodes ref/relref.

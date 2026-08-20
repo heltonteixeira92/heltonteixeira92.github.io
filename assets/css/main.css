@@ -1,0 +1,479 @@
+/* ==========================================================================
+   Fontes
+   ========================================================================== */
+
+@font-face {
+  font-family: "Source Serif";
+  src: url("/fonts/serif.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Serif";
+  src: url("/fonts/serif-italica.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/mono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Tokens
+
+   Modo claro é o padrão; o escuro só redefine as cores. Todo valor de cor
+   no arquivo vem daqui — nenhuma cor literal fora deste bloco.
+   ========================================================================== */
+
+:root {
+  --fundo:        #faf8f5;
+  --fundo-suave:  #f2eee8;
+  --texto:        #1c1b19;
+  --texto-fraco:  #6b6862;
+  --linha:        #e3ded6;
+  --acento:       #a03e28;
+
+  --cod-comentario: var(--texto-fraco);
+  --cod-string:     #3f6e3f;
+  --cod-palavra:    var(--acento);
+  --cod-numero:     #6b4a9e;
+  --cod-funcao:     #1c5a80;
+
+  --serif: "Source Serif", Georgia, "Times New Roman", serif;
+  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --medida: 34rem;   /* ~65 caracteres de largura de leitura */
+  --ritmo:  1.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo:        #17161a;
+    --fundo-suave:  #201f24;
+    --texto:        #e8e4dc;
+    --texto-fraco:  #97918a;
+    --linha:        #2e2c31;
+    --acento:       #e08a6a;
+
+    --cod-string:  #9ccc8f;
+    --cod-numero:  #c9a7f0;
+    --cod-funcao:  #7fc4e8;
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.5rem;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--acento);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* ==========================================================================
+   Cabeçalho e rodapé
+   ========================================================================== */
+
+.topo,
+.conteudo,
+.rodape {
+  max-width: var(--medida);
+  margin-inline: auto;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 3.5rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.marca {
+  color: var(--texto);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.marca:hover { color: var(--acento); }
+
+.menu a {
+  margin-left: 1.25rem;
+  color: var(--texto-fraco);
+  text-decoration: none;
+}
+
+.menu a:hover { color: var(--acento); }
+
+.rodape {
+  margin-top: 5rem;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--linha);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--texto-fraco);
+}
+
+.rodape a { color: var(--texto-fraco); }
+.rodape a:hover { color: var(--acento); }
+
+/* ==========================================================================
+   Abertura da home
+   ========================================================================== */
+
+.abertura {
+  font-size: 1.375rem;
+  line-height: 1.55;
+  margin: 0 0 3rem;
+  text-wrap: pretty;
+}
+
+.abertura p { margin: 0; }
+
+/* ==========================================================================
+   Filtro de categorias
+   ========================================================================== */
+
+.filtro {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.85rem 0;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.filtro a {
+  color: var(--texto-fraco);
+  text-decoration: none;
+}
+
+.filtro a:hover { color: var(--acento); }
+
+.filtro a[aria-current="page"] {
+  color: var(--texto);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Listagem de posts
+   ========================================================================== */
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item + .item {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--linha);
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--texto-fraco);
+  letter-spacing: 0.02em;
+}
+
+.categoria {
+  color: var(--texto-fraco);
+  text-decoration: none;
+}
+
+.categoria:hover { color: var(--acento); }
+
+.item h2 {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.item h2 a {
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.item h2 a:hover {
+  color: var(--acento);
+  text-decoration: underline;
+}
+
+.resumo {
+  margin: 0;
+  color: var(--texto-fraco);
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Post
+   ========================================================================== */
+
+.post {
+  margin-bottom: 4rem;
+}
+
+.titulo {
+  margin: 0.5rem 0 var(--ritmo);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.prosa > * + * { margin-top: var(--ritmo); }
+
+.prosa h2 {
+  margin-top: 3rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prosa h3 {
+  margin-top: 2.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.prosa blockquote {
+  margin-inline: 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--linha);
+  color: var(--texto-fraco);
+  font-style: italic;
+}
+
+.prosa hr {
+  border: 0;
+  border-top: 1px solid var(--linha);
+  margin-block: 3rem;
+}
+
+.tags {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linha);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.tags a {
+  margin-right: 0.9rem;
+  color: var(--texto-fraco);
+  text-decoration: none;
+}
+
+.tags a:hover { color: var(--acento); }
+
+/* ==========================================================================
+   Código
+
+   Chroma emite classes (noClasses = false em hugo.toml), o que permite ao
+   destaque de sintaxe seguir o modo claro/escuro. Com estilo inline, as
+   cores ficariam presas ao tema claro.
+   ========================================================================== */
+
+code, pre, kbd, samp {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+}
+
+.prosa :not(pre) > code {
+  padding: 0.15em 0.35em;
+  background: var(--fundo-suave);
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+.prosa pre {
+  padding: 1rem 1.15rem;
+  background: var(--fundo-suave);
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+.prosa pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs,
+.chroma .cp, .chroma .cpf     { color: var(--cod-comentario); font-style: italic; }
+
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn,
+.chroma .kp, .chroma .kr, .chroma .kt, .chroma .ow { color: var(--cod-palavra); }
+
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl,
+.chroma .sd, .chroma .s2, .chroma .se, .chroma .sh, .chroma .si,
+.chroma .sx, .chroma .sr, .chroma .s1, .chroma .ss { color: var(--cod-string); }
+
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
+.chroma .mi, .chroma .il, .chroma .mo               { color: var(--cod-numero); }
+
+.chroma .nf, .chroma .fm, .chroma .nb, .chroma .nc { color: var(--cod-funcao); }
+
+.chroma .err { color: var(--acento); font-weight: 700; }
+
+/* ==========================================================================
+   Fotos
+   ========================================================================== */
+
+.foto {
+  margin: 3rem 0;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.foto figcaption {
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--texto-fraco);
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Página /sobre
+   ========================================================================== */
+
+.perfil {
+  width: 8rem;
+  border-radius: 50%;
+  margin-bottom: var(--ritmo);
+}
+
+.experiencias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.experiencias > li + li {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--linha);
+}
+
+.periodo {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--texto-fraco);
+  letter-spacing: 0.02em;
+}
+
+.empresa {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.35rem 0 0.75rem;
+}
+
+.logo {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 4px;
+  flex: none;
+}
+
+.experiencias h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.titulo-secao {
+  margin: 4rem 0 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--linha);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.experiencias ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.experiencias li { text-wrap: pretty; }
+
+.nuvem {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+}
+
+.nuvem span { color: var(--texto-fraco); }
+
+/* ==========================================================================
+   Telas estreitas
+   ========================================================================== */
+
+@media (max-width: 30rem) {
+  body { padding-inline: 1.15rem; font-size: 1.0625rem; }
+  .topo { padding: 1.75rem 0 2.5rem; }
+  .titulo { font-size: 1.625rem; }
+  .abertura { font-size: 1.1875rem; }
+}

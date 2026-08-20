@@ -12,3 +12,8 @@ devia e a previsão dizendo oito graus na serra. O frio eu tinha resolvido:
 três camadas, luva térmica, punho aquecido.
 
 O que eu não tinha resolvido era a neblina.
+
+{{< foto src="foto-teste.jpg" legenda="Teste do pipeline de imagem — trocar por foto real da subida." >}}
+
+A visibilidade caiu para uns dez metros e a estrada virou uma sucessão de curvas
+que eu só descobria quando já estava dentro delas.

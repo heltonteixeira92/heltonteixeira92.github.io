@@ -1,0 +1,20 @@
+{{ $src := .Get "src" }}
+{{ $legenda := .Get "legenda" | default "" }}
+
+{{ with .Page.Resources.GetMatch $src }}
+  {{ $grande := .Process "resize 1400x webp q82" }}
+  {{ $pequena := .Process "resize 700x webp q82" }}
+  <figure class="foto">
+    <img src="{{ $pequena.RelPermalink }}"
+         srcset="{{ $pequena.RelPermalink }} 700w, {{ $grande.RelPermalink }} 1400w"
+         sizes="(max-width: 36rem) 100vw, 34rem"
+         width="{{ $grande.Width }}"
+         height="{{ $grande.Height }}"
+         alt="{{ $legenda }}"
+         loading="lazy"
+         decoding="async">
+    {{ with $legenda }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ else }}
+  {{ errorf "shortcode foto: imagem %q nao encontrada em %s" $src .Page.Path }}
+{{ end }}

@@ -7,10 +7,12 @@
   fim: "atual"
   logo: "magalucloud_logo.jpeg"
   atividades:
-    # PENDENTE: emprego atual e o mais relevante do currículo, e a lista
-    # está vazia desde o portfólio antigo. Duas ou três linhas sobre o que
-    # você construiu aqui. Só você pode escrever isso.
-    - "Descrever as atividades na Magalu Cloud."
+    - "Projeto e desenvolvo funcionalidades de backend com Python, Django e Django REST Framework."
+    - "Implementei mecanismos de detecção de fraude e análise de risco, ajudando a reduzir contas fraudulentas e evitar perdas financeiras significativas."
+    - "Modelei soluções para suportar regras de negócio complexas."
+    - "Melhorei a performance do sistema otimizando queries de banco de dados e resolvendo problemas como consultas N+1."
+    - "Contribuí em iniciativas técnicas para alinhar o sistema aos requisitos de segurança e conformidade da SOC 2 Type II e da ISO 27001."
+    - "Participei ativamente do compartilhamento de conhecimento, com apresentações técnicas (como otimização de performance) e iniciativas internas de prática de inglês."
 
 - cargo: "Analista Desenvolvedor Python"
   empresa: "G4F"

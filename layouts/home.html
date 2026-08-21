@@ -1,5 +1,8 @@
 {{ define "main" }}
-  <h1 class="manchete"><span class="c-codigo">Código</span> de dia.<br><span class="c-fora">Estrada</span> de noite.</h1>
+  <h1 class="manchete">
+    <a class="c-codigo" href="{{ "/categorias/codigo/" | relURL }}">~/codigo</a>
+    <a class="c-fora" href="{{ "/categorias/fora/" | relURL }}">~/fora</a>
+  </h1>
 
   {{ with .Content }}
     <div class="abertura">{{ . }}</div>

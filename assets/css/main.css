@@ -180,14 +180,26 @@ img { max-width: 100%; height: auto; }
    ========================================================================== */
 
 .manchete {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.005em;
-  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2em 1.5rem;
   margin: 0 0 1.15rem;
-  text-wrap: balance;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 9vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.manchete a {
+  text-decoration: none;
+}
+
+.manchete a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.08em;
 }
 
 .manchete .c-codigo { color: var(--acento-codigo); }

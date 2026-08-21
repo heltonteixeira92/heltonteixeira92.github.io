@@ -4,7 +4,7 @@ date: 2026-08-10
 categorias: ["fora"]
 tags: ["santa-catarina", "solo"]
 resumo: "Saí de Sampa achando que o frio era o problema."
-draft: false
+draft: true
 ---
 
 Saí de São Paulo numa sexta de madrugada, com a moto carregada além do que

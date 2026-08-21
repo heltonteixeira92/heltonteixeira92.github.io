@@ -4,7 +4,7 @@ date: 2026-07-02
 categorias: ["codigo"]
 tags: ["redis", "filas"]
 resumo: "Todo mundo trata LPUSH como se fosse uma garantia. Não é."
-draft: false
+draft: true
 ---
 
 Uma fila no Redis parece simples até o primeiro worker morrer no meio do

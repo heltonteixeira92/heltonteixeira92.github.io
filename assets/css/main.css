@@ -26,6 +26,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("/fonts/display.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ==========================================================================
    Tokens
 
@@ -34,12 +42,19 @@
    ========================================================================== */
 
 :root {
-  --fundo:        #faf8f5;
-  --fundo-suave:  #f2eee8;
-  --texto:        #1c1b19;
-  --texto-fraco:  #6b6862;
-  --linha:        #e3ded6;
-  --acento:       #a03e28;
+  --fundo:        #eef0f2;
+  --fundo-suave:  #e3e6ea;
+  --texto:        #1a1d22;
+  --texto-fraco:  #616774;
+  --linha:        #d3d7dc;
+
+  /* Dois acentos, um por categoria — a cor carrega a informação de qual
+     mundo o post pertence, em vez de só decorar. --acento é o genérico
+     de chrome de página (nav, foco, links de prosa fora de contexto de
+     categoria), alinhado ao laranja por padrão. */
+  --acento-codigo: #2c724d;
+  --acento-fora:   #a24f19;
+  --acento:        var(--acento-fora);
 
   --cod-comentario: var(--texto-fraco);
   --cod-string:     #3f6e3f;
@@ -47,8 +62,9 @@
   --cod-numero:     #6b4a9e;
   --cod-funcao:     #1c5a80;
 
-  --serif: "Source Serif", Georgia, "Times New Roman", serif;
-  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --serif:   "Source Serif", Georgia, "Times New Roman", serif;
+  --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
 
   --medida: 34rem;   /* ~65 caracteres de largura de leitura */
   --ritmo:  1.75rem;
@@ -56,12 +72,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fundo:        #17161a;
-    --fundo-suave:  #201f24;
-    --texto:        #e8e4dc;
-    --texto-fraco:  #97918a;
-    --linha:        #2e2c31;
-    --acento:       #e08a6a;
+    --fundo:        #14161a;
+    --fundo-suave:  #1c1f26;
+    --texto:        #e8e6e0;
+    --texto-fraco:  #8b8f99;
+    --linha:        #262931;
+
+    --acento-codigo: #4a9e6f;
+    --acento-fora:   #d97b3f;
 
     --cod-string:  #9ccc8f;
     --cod-numero:  #c9a7f0;
@@ -158,8 +176,22 @@ img { max-width: 100%; height: auto; }
 .rodape a:hover { color: var(--acento); }
 
 /* ==========================================================================
-   Abertura da home
+   Manchete e abertura da home
    ========================================================================== */
+
+.manchete {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  margin: 0 0 1.15rem;
+  text-wrap: balance;
+}
+
+.manchete .c-codigo { color: var(--acento-codigo); }
+.manchete .c-fora { color: var(--acento-fora); }
 
 .abertura {
   font-size: 1.375rem;
@@ -197,6 +229,12 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
 }
 
+.filtro a.codigo:hover,
+.filtro a.codigo[aria-current="page"] { color: var(--acento-codigo); }
+
+.filtro a.fora:hover,
+.filtro a.fora[aria-current="page"] { color: var(--acento-fora); }
+
 /* ==========================================================================
    Listagem de posts
    ========================================================================== */
@@ -207,6 +245,31 @@ img { max-width: 100%; height: auto; }
   padding: 0;
 }
 
+.item {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--linha);
+}
+
+/* A régua lateral marca a categoria do post em cor, sem precisar ler
+   nada — verde pra código, laranja pra estrada. Post com as duas
+   categorias ganha as duas cores dividindo a régua. */
+.item.codigo::before { background: var(--acento-codigo); }
+.item.fora::before    { background: var(--acento-fora); }
+.item.codigo.fora::before {
+  background: linear-gradient(to bottom, var(--acento-fora) 50%, var(--acento-codigo) 50%);
+}
+
 .item + .item {
   margin-top: 3rem;
   padding-top: 3rem;
@@ -215,6 +278,7 @@ img { max-width: 100%; height: auto; }
 
 .meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -227,13 +291,20 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
 }
 
-.categoria:hover { color: var(--acento); }
+.categoria:hover { color: var(--acento); text-decoration: underline; }
+
+.categoria.codigo { color: var(--acento-codigo); }
+.categoria.fora    { color: var(--acento-fora); }
+
+.categoria.codigo:hover,
+.categoria.fora:hover { text-decoration: underline; }
 
 .item h2 {
+  font-family: var(--display);
+  font-weight: 700;
   margin: 0.4rem 0 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 1.625rem;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
@@ -262,11 +333,12 @@ img { max-width: 100%; height: auto; }
 }
 
 .titulo {
+  font-family: var(--display);
   margin: 0.5rem 0 var(--ritmo);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
   text-wrap: balance;
 }
 
@@ -440,11 +512,12 @@ code, pre, kbd, samp {
 }
 
 .titulo-secao {
+  font-family: var(--display);
   margin: 4rem 0 1.75rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--linha);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.375rem;
+  font-weight: 700;
 }
 
 .experiencias ul {
@@ -474,6 +547,7 @@ code, pre, kbd, samp {
 @media (max-width: 30rem) {
   body { padding-inline: 1.15rem; font-size: 1.0625rem; }
   .topo { padding: 1.75rem 0 2.5rem; }
-  .titulo { font-size: 1.625rem; }
+  .manchete { font-size: 1.75rem; }
+  .titulo { font-size: 1.75rem; }
   .abertura { font-size: 1.1875rem; }
 }

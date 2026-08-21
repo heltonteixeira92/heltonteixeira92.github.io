@@ -1,8 +1,8 @@
-<li class="item">
+<li class="item{{ range .Params.categorias }} {{ . }}{{ end }}">
   <div class="meta">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
     {{ range .Params.categorias }}
-      <a class="categoria" href="{{ (printf "/categorias/%s/" (. | urlize)) | relURL }}">~/{{ . }}</a>
+      <a class="categoria {{ . }}" href="{{ (printf "/categorias/%s/" (. | urlize)) | relURL }}">~/{{ . }}</a>
     {{ end }}
   </div>
   <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

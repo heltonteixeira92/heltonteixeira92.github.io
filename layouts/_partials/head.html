@@ -6,6 +6,7 @@
 
   <link rel="preload" href="/fonts/serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/display.woff2" as="font" type="font/woff2" crossorigin>
 
   {{ with resources.Get "css/main.css" }}
     {{ $css := . | minify | fingerprint }}
